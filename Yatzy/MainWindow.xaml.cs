@@ -28,11 +28,22 @@ namespace Yatzy
 
         private void btnRollDices_Click(object sender, RoutedEventArgs e)
         {
-            int dieOne, dieTwo, dieThree, dieFour, dieFive, totalSum, bonus;
+
+            // skapa ett objekt/instans av GameEngine 
+
+            GameEngine gameEngine = new GameEngine();
+
+
+
+
+            int dieOne, dieTwo, dieThree, dieFour, dieFive;
+            dieOne = gameEngine.RoleDie();
+
+            int bonus;
             // uppdrag
             // kasta en tärning och presentera resultatet
 
-
+            /*
             dieOne = random.Next(1, 7);
             dieTwo = random.Next(1, 7);
             dieThree = random.Next(1, 7);
@@ -44,8 +55,24 @@ namespace Yatzy
             lbldieThree.Content = dieThree;
             lbldieFour.Content = dieFour;
             lbldieFive.Content = dieFive;
+            */
 
-            totalSum = dieOne + dieTwo + dieThree + dieFour + dieFive;
+            //Refaktorera
+            // 5 separata tärningar? Nej, 
+            int totalSum = 0;
+
+            int[] dices = new int[5];
+            for (int i = 0; i < 5; i++)
+            {
+                dices[i] = gameEngine.RoleDie();
+            }
+
+            foreach (int die in dices)
+            {
+                totalSum += die;
+            }
+
+            //totalSum = dieOne + dieTwo + dieThree + dieFour + dieFive;
 
             if (totalSum >= 63)
             {
@@ -60,6 +87,10 @@ namespace Yatzy
             txtBonus.Text = bonus.ToString();
             // Alt piltangent för att flytta rad
             txtTotal.Text = totalSum.ToString();
+
+            lbldieOne.Content = dices[0];
+            lbldieTwo.Content = dices[1];
+
         }
     }
 }
