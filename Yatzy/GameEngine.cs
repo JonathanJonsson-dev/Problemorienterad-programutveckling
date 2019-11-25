@@ -21,14 +21,14 @@ namespace Yatzy
         /// <summary>
         /// Game category one
         /// </summary>
-        public int Ones { get; set; }
-        public int Twos { get; set; }
-        public int Threes { get; set; }
-        public int Fours { get; set; }
-        public int Fives { get; set; }
-        public int Sixes { get; set; }
-        public int Bonus { get; set; }
-        public int Total { get; set; }
+        public int Ones { get; private set; }
+        public int Twos { get; private set; }
+        public int Threes { get; private set; }
+        public int Fours { get; private set; }
+        public int Fives { get; private set; } // private eller protected
+        public int Sixes { get; private set; }
+        public int Bonus { get; private set; }
+        public int Total { get; private set; }
 
 
 
